@@ -2,6 +2,7 @@ import * as Tone from "tone";
 
 import useRockStore from "../store/RockStore";
 import { useEffect } from "react";
+import NumberInput from "./NumberInput";
 
 export default function BPMControl() {
   const bpm = useRockStore((s) => s.bpm);
@@ -10,12 +11,13 @@ export default function BPMControl() {
     Tone.Transport.bpm.value = bpm;
   }, [bpm]);
   return (
-    <input
-      type="number"
-      min="1"
-      max="250"
+    <NumberInput
+      name="bpm"
+      label="BPM"
+      setValue={setBPM}
       value={bpm}
-      onChange={(e) => setBPM(parseInt(e.target.value, 10))}
+      min={1}
+      max={300}
     />
   );
 }

@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="flex flex-col flex-wrap items-center justify-center h-screen">
       {isStorageLoading ? null : <Sequencer />}
-      <div className="flex flex-row items-center justify-center">
+      <div className="flex flex-row items-center justify-center gap-8">
         {isStorageLoading ? null : <><BPMControl /><StepControl /></>}
         <PlayButton />
       </div>

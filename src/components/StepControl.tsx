@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import useRockStore from "../store/RockStore";
 import { NOTES } from "../store/constants";
+import NumberInput from "./NumberInput";
 
 export default function StepControl() {
   const sequence = useRockStore((s) => s.sequence);
@@ -19,12 +20,13 @@ export default function StepControl() {
     }
   };
   return (
-    <input
-      type="number"
-      min="8"
-      max="16"
+    <NumberInput
+      name="steps"
+      label="Steps"
+      setValue={setSteps}
       value={sequence.length}
-      onChange={(e) => setSteps(parseInt(e.target.value, 10))}
+      min={8}
+      max={16}
     />
   );
 }
