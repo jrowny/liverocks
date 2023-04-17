@@ -17,9 +17,11 @@ function App() {
   const {
     liveblocks: { enterRoom, leaveRoom, isStorageLoading },
   } = useRockStore();
+
   useEffect(() => {
     const roomId = room ? room : nanoid();
     if (!room) {
+      console.log("Setting roomId ", roomId);
       setRoom(roomId);
     }
     enterRoom(roomId);
