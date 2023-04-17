@@ -6,6 +6,7 @@ import Sequencer from './components/Sequencer';
 import StepControl from './components/StepControl';
 import PlayButton from './components/PlayButton';
 import BPMControl from './components/BPMControl';
+import Volume from './components/Volume';
 
 
 function getQueryVariable(variable: string): string | undefined {
@@ -55,6 +56,7 @@ function App() {
         {isStorageLoading ? null : <><BPMControl /><StepControl /></>}
         <PlayButton />
       </div>
+      <Volume />
     </div>
   )
 }

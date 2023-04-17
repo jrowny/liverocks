@@ -15,6 +15,7 @@ export default function Sequencer() {
   const setPlayIndex = useRockStore((s) => s.setPlayIndex);
   const isAudioReady = useRockStore((s) => s.isAudioReady);
   const isPlaying = useRockStore((s) => s.isPlaying);
+  const volume = useRockStore((s) => s.volume);
   const [sequencer, setSequencer] = useState<Tone.Sequence>();
   const [synth, setSynth] = useState<Tone.Synth[]>();
 
@@ -32,7 +33,7 @@ export default function Sequencer() {
   };
 
   useEffect(() => {
-    setSynth(NOTES.map(() => new Tone.Synth().toDestination()));
+    setSynth(NOTES.map(() => new Tone.Synth().connect(volume)));
     () => {
       if (synth) {
         synth.forEach((s) => s.dispose());
