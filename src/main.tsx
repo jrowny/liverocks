@@ -1,24 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { QueryParamProvider } from 'use-query-params';
-import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import qs from 'query-string';
 import App from './App';
 
 import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <QueryParamProvider adapter={ReactRouter6Adapter} options={{
-        searchStringToObject: qs.parse,
-        objectToSearchString: qs.stringify,
-      }}>
-        <Routes>
-          <Route path="/" element={<App />} />
-        </Routes>
-      </QueryParamProvider>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
 );
