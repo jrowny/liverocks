@@ -22,7 +22,7 @@ function App() {
     const roomId = room ? room : nanoid();
     if (!room) {
       console.log("Setting roomId ", roomId);
-      setRoom(roomId);
+      setRoom(roomId, 'replace');
     }
     enterRoom(roomId);
     return () => {
