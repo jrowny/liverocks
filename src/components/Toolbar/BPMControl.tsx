@@ -1,8 +1,8 @@
 import * as Tone from "tone";
 
-import useRockStore from "../store/RockStore";
+import useRockStore from "../../store/RockStore";
 import { useEffect } from "react";
-import NumberInput from "./NumberInput";
+import NumberInput from "../UI/NumberInput";
 
 export default function BPMControl() {
   const bpm = useRockStore((s) => s.bpm);

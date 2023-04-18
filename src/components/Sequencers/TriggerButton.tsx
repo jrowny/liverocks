@@ -14,6 +14,7 @@ const TriggerButton: React.FC<Props> = ({ isActive, columnIndex, rowIndex, toggl
     'w-10',
     'h-10',
     'rounded-md',
+    'cursor-pointer',
     isActive
       ? ['bg-emerald-400', 'shadow-lg', 'shadow-emerald-500/50']
       : 'bg-slate-400'

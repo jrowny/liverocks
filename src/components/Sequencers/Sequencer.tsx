@@ -3,21 +3,27 @@ import clsx from 'clsx';
 
 import * as Tone from 'tone'
 
-import useRockStore from "../store/RockStore";
-import { NOTES } from "../store/constants";
+import useRockStore from "../../store/RockStore";
 import TriggerButton from "./TriggerButton";
 
+type Instrument = Tone.AMSynth | Tone.FMSynth | Tone.Synth | Tone.Sampler;
 
-export default function Sequencer() {
-  const sequence = useRockStore((s) => s.sequence);
-  const setSequence = useRockStore((s) => s.setSequence);
+interface SequencerProps {
+  notes: string[];
+  setSequence: (sequence: number[][]) => void;
+  sequence: number[][];
+  instrument: () => Instrument;
+}
+
+
+export default function Sequencer({ notes, setSequence, sequence, instrument }: SequencerProps) {
   const playIndex = useRockStore((s) => s.playIndex);
   const setPlayIndex = useRockStore((s) => s.setPlayIndex);
   const isAudioReady = useRockStore((s) => s.isAudioReady);
   const isPlaying = useRockStore((s) => s.isPlaying);
   const volume = useRockStore((s) => s.volume);
   const [sequencer, setSequencer] = useState<Tone.Sequence>();
-  const [synth, setSynth] = useState<Tone.Synth[]>();
+  const [synth, setSynth] = useState<Instrument[]>();
 
   const toggle = (row: number, column: number) => {
     const current = sequence[row][column];
@@ -33,7 +39,7 @@ export default function Sequencer() {
   };
 
   useEffect(() => {
-    setSynth(NOTES.map(() => new Tone.Synth().connect(volume)));
+    setSynth(notes.map(() => instrument().connect(volume)));
     () => {
       if (synth) {
         synth.forEach((s) => s.dispose());
@@ -55,7 +61,7 @@ export default function Sequencer() {
           if (synth) {
             sequence[index].forEach((value, noteIndex) => {
               if (value === 1) {
-                synth[noteIndex].triggerAttackRelease(NOTES[noteIndex], `8n`, time);
+                synth[noteIndex].triggerAttackRelease(notes[noteIndex], `${sequence.length}n`, time);
               }
             });
           }

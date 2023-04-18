@@ -1,4 +1,4 @@
-import useRockStore from "../store/RockStore";
+import useRockStore from "../../store/RockStore";
 
 export default function Volume() {
   const volume = useRockStore((s) => s.volume);
@@ -15,7 +15,7 @@ export default function Volume() {
         value={volume.volume.value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVolume(parseInt(e.target.value, 10))}
         min={-50}
-        max={50}
+        max={20}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
       />
 

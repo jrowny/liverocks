@@ -2,7 +2,7 @@ import { IconPlayerPlay, IconPlayerStop } from "@tabler/icons-react";
 import { useKeyPressEvent } from 'react-use';
 import * as Tone from "tone";
 
-import useRockStore from "../store/RockStore";
+import useRockStore from "../../store/RockStore";
 
 
 function PlayButton() {
@@ -28,7 +28,7 @@ function PlayButton() {
 
   useKeyPressEvent(' ', togglePlay); // this is a bit weird, but you need an actual space ' ' for spacebar to trigger
 
-  return <button onClick={togglePlay} className="text-slate-200">{isPlaying ? <IconPlayerStop /> : <IconPlayerPlay />}</button>;
+  return <button onClick={togglePlay} className="text-slate-200">{isPlaying ? <IconPlayerStop size={48} /> : <IconPlayerPlay size={48} />}</button>;
 }
 
 export default PlayButton;
