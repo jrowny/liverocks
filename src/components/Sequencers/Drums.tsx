@@ -5,8 +5,8 @@ import * as Tone from "tone";
 import Hideable from "../UI/Hideable";
 
 export default function Drumbs() {
-  const drumbSequence = useRockStore((s) => s.drumbSequence);
-  const setDrumbSequence = useRockStore((s) => s.setDrumbSequence);
+  const drumbSequence = useRockStore((s) => s.drumSequence);
+  const setDrumSequence = useRockStore((s) => s.setDrumSequence);
   const volume = useRockStore((s) => s.volume);
 
   const getDrumbInstrument = () => {
@@ -23,10 +23,10 @@ export default function Drumbs() {
   }
 
   return (
-    <Hideable title="Drumbs" defaultIsVisible={false}>
+    <Hideable title="Drums" defaultIsVisible={false}>
       <Sequencer
         notes={DRUMBS}
-        setSequence={setDrumbSequence}
+        setSequence={setDrumSequence}
         sequence={drumbSequence}
         instrument={getDrumbInstrument}
       />

@@ -9,7 +9,7 @@ import { KEYS, BASS, DRUMBS } from "./constants";
 type State = {
   keysSequence: number[][];
   bassSequence: number[][];
-  drumbSequence: number[][];
+  drumSequence: number[][];
   isAudioReady: boolean;
   isPlaying: boolean;
   playIndex: number;
@@ -19,7 +19,7 @@ type State = {
   setIsPlaying: (isPlaying: boolean) => void;
   setKeysSequence: (keysSequence: number[][]) => void;
   setBassSequence: (bassSequence: number[][]) => void;
-  setDrumbSequence: (drumbSequence: number[][]) => void;
+  setDrumSequence: (drumSequence: number[][]) => void;
   setPlayIndex: (playIndex: number) => void;
   setBPM: (bpm: number) => void;
   setVolume: (volume: number) => void;
@@ -39,7 +39,7 @@ const defaultState = {
   bassSequence: Array.from(Array(DEFAULT_STEPS), (_) =>
     Array(BASS.length).fill(0)
   ),
-  drumbSequence: Array.from(Array(DEFAULT_STEPS), (_) =>
+  drumSequence: Array.from(Array(DEFAULT_STEPS), (_) =>
     Array(DRUMBS.length).fill(0)
   ),
   isPlaying: false,
@@ -59,8 +59,8 @@ const useRockStore = create<WithLiveblocks<State>>()(
       setBassSequence: (bassSequence: number[][]) => {
         set(() => ({ bassSequence }));
       },
-      setDrumbSequence: (drumbSequence: number[][]) => {
-        set(() => ({ drumbSequence }));
+      setDrumSequence: (drumSequence: number[][]) => {
+        set(() => ({ drumSequence }));
       },
       setIsAudioReady: (isAudioReady: boolean) => {
         set(() => ({ isAudioReady }));
@@ -87,7 +87,7 @@ const useRockStore = create<WithLiveblocks<State>>()(
         bpm: true,
         keysSequence: true,
         bassSequence: true,
-        drumbSequence: true,
+        drumSequence: true,
       },
     }
   )

@@ -11,7 +11,7 @@ import { BASS, DRUMBS, KEYS } from './store/constants';
 import * as Tone from 'tone'
 import Keys from './components/Sequencers/Keys';
 import Bass from './components/Sequencers/Bass';
-import Drumbs from './components/Sequencers/Drumbs';
+import Drumbs from './components/Sequencers/Drums';
 
 
 function getQueryVariable(variable: string): string | undefined {
