@@ -1,15 +1,15 @@
 import useRockStore from "../../store/RockStore";
 import Sequencer from "./Sequencer";
-import { DRUMBS } from "../../store/constants";
+import { DRUMS } from "../../store/constants";
 import * as Tone from "tone";
 import Hideable from "../UI/Hideable";
 
-export default function Drumbs() {
-  const drumbSequence = useRockStore((s) => s.drumSequence);
+export default function Drums() {
+  const drumSequence = useRockStore((s) => s.drumSequence);
   const setDrumSequence = useRockStore((s) => s.setDrumSequence);
   const volume = useRockStore((s) => s.volume);
 
-  const getDrumbInstrument = () => {
+  const getDrumInstrument = () => {
     const sampler = new Tone.Sampler({
       urls: {
         "A1": "RDM_Analog_SR88-Kick.wav",
@@ -25,10 +25,10 @@ export default function Drumbs() {
   return (
     <Hideable title="Drums" defaultIsVisible={false}>
       <Sequencer
-        notes={DRUMBS}
+        notes={DRUMS}
         setSequence={setDrumSequence}
-        sequence={drumbSequence}
-        instrument={getDrumbInstrument}
+        sequence={drumSequence}
+        instrument={getDrumInstrument}
       />
     </Hideable>
   );

@@ -4,7 +4,7 @@ import { liveblocks } from "@liveblocks/zustand";
 import type { WithLiveblocks } from "@liveblocks/zustand";
 import * as Tone from "tone";
 
-import { KEYS, BASS, DRUMBS } from "./constants";
+import { KEYS, BASS, DRUMS } from "./constants";
 
 type State = {
   keysSequence: number[][];
@@ -40,7 +40,7 @@ const defaultState = {
     Array(BASS.length).fill(0)
   ),
   drumSequence: Array.from(Array(DEFAULT_STEPS), (_) =>
-    Array(DRUMBS.length).fill(0)
+    Array(DRUMS.length).fill(0)
   ),
   isPlaying: false,
   isAudioReady: false,
